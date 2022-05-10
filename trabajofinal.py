@@ -46,4 +46,24 @@ for columna in columnas:
     else:
         print("Columnas repetidas.")
 
+print("\nE J E R C I C I O   1 :\n")
 print(tabulate(tabla, headers = "keys"))
+
+# -----------
+# -----------
+# EJERCICIO 2
+# -----------
+# -----------
+
+def filtro(aerolinea, *puerta):
+    if len(puerta) > 0 :
+        return [dato for dato in datos if ((dato["Operating Airline"]) == aerolinea and (dato["Boarding Area"]) == puerta[0])]
+    else :
+        return [dato for dato in datos if (dato["Operating Airline"]) == aerolinea]
+
+air_china = filtro("Air China")
+air_berlin = filtro("Air Berlin", "G")
+
+print("\nE J E R C I C I O   2 :\n")
+print("Filtro ==> Air China\n\n" + str(air_china) + "\n")
+print("Filtro ==> Air Berlin, G\n\n" + str(air_berlin) + "\n")
