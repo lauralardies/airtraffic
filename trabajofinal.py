@@ -25,3 +25,13 @@ else:
                 dato[columnas[i]] = campos[i]
         datos.append(dato)
 
+tabla = []
+for columna in columnas:
+    if columna not in tabla:
+        tabla[columna] = [columna, type(dato[columna])]
+    else:
+        print("Columnas repetidas.")
+
+print("NOMBRE DEL CAMPO\tTIPO DE DATO")
+for key in tabla:
+    print(key + "\t" + str(tabla[key]) + "\n")
