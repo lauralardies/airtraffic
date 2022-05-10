@@ -1,4 +1,11 @@
+from tabulate import tabulate
 import pyspark
+
+# -----------------
+# -----------------
+# LEEMOS EL ARCHIVO
+# -----------------
+# -----------------
 
 try:
     f = open("air_traffic_data.csv")
@@ -25,13 +32,18 @@ else:
                 dato[columnas[i]] = campos[i]
         datos.append(dato)
 
-tabla = []
+# -----------
+# -----------
+# EJERCICIO 1
+# -----------
+# -----------
+
+tabla = {"Nombre del campo" : [], "Tipo de dato" : []}
 for columna in columnas:
     if columna not in tabla:
-        tabla[columna] = [columna, type(dato[columna])]
+        tabla["Nombre del campo"].append(columna)
+        tabla["Tipo de dato"].append(type(dato[columna]))
     else:
         print("Columnas repetidas.")
 
-print("NOMBRE DEL CAMPO\tTIPO DE DATO")
-for key in tabla:
-    print(key + "\t" + str(tabla[key]) + "\n")
+print(tabulate(tabla, headers = "keys"))
